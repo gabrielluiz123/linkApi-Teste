@@ -3,21 +3,22 @@ const axios = require("axios");
 var parseString = require('xml2js').parseString;
 
 module.exports = async (request, response, next) => {
-    var name = 'request.dataPipe';
-    var typePeople = 'request.dataPipe';
-    var address = '';
+    var addressSplit = request.dataPipe.orgAddress.split(',');
+    var name = request.dataPipe.orgName;
+    var typePeople = 'J';
+    var address = addressSplit[1];
     var cpfCnpj = '';
     var ie = '';
-    var number = '';
-    var comp = '';
-    var neigh = '';
-    var city = '';
-    var cep = '';
-    var uf = '';
-    var phone = '';
-    var email = '';
-    var value = '';
-    var nameDeal = '';
+    var number = addressSplit[5];
+    var comp = addressSplit[4];
+    var neigh = addressSplit[3];
+    var city = addressSplit[1].split('-')[0];
+    var cep = addressSplit[2];
+    var uf = addressSplit[1].split('-')[1];
+    var phone = request.dataPipe.phoneOrg;
+    var email = request.dataPipe.email;
+    var value = request.dataPipe.valueDeal;
+    var nameDeal = request.dataPipe.nameDeal;
     var xmlString = `<?xml version="1.0" encoding="UTF-8"?>
     < pedido >
  <cliente>
