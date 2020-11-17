@@ -1,12 +1,12 @@
 const { response } = require('express');
 const jwt = require('jsonwebtoken');
-const envFile = require("../config/env");
+require("dotenv").config();
 
 module.exports = (require, response, next) => {
 
     try {
         const token = require.headers.authorization.split(' ')[1];
-        const decode = jwt.verify(token, envFile.env.JWT_KEY);
+        const decode = jwt.verify(token, process.env.JWT_KEY);
         require.user = decode;
         next();
     } catch (error) {

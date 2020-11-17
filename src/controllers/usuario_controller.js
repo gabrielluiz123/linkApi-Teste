@@ -1,15 +1,15 @@
-const users = require("../config/user");
+
 const jwt = require("jsonwebtoken");
-const envFile = require("../config/env");
+require("dotenv").config();
 
 exports.login = (request, response, next) => {
-    const password = users.password;
-    const user = users.user;
+    const password = process.env.password;
+    const user = process.env.user;
 
     if (request.body.password == password && request.body.user == user) {
         const token = jwt.sign({
             user: user,
-        }, envFile.env.JWT_KEY, {
+        }, process.env.JWT_KEY, {
             expiresIn: "2h",
 
         });
