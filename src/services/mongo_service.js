@@ -1,25 +1,13 @@
-const { MongoClient } = require('mongodb');
-const fs = require('fs');
+const mongoose = require('mongoose');
 
-const credentials = fs.readFileSync('<path_to_certificate>');
+const uri = "mongodb+srv://gabriel123:linkapi123@cluster0.owdsx.mongodb.net/linkApi?retryWrites=true&w=majority";
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+    .then(() => {
+        console.log("MongoDB Connected…");
+    })
+    .catch(err => console.log(err))
 
-const client = new MongoClient('mongodb://gabriel123:gabriells@123@<hostname>/<dbname>?ssl=true&replicaSet=atlas-49qveb-shard-0&authSource=admin&retryWrites=true&w=majority', {
-    sslKey: credentials,
-    sslCert: credentials
-});
-
-async function run() {
-    try {
-        await client.connect();
-        const database = client.db("testDB");
-        const collection = database.collection("testCol");
-        const docCount = await collection.countDocuments({});
-        console.log(docCount);
-        // perform actions using client
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
-    }
-}
-
-run().catch(console.dir);
+module.exports = mongoose.connection;
