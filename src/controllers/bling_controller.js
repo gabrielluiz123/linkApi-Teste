@@ -5,8 +5,9 @@ const js2xmlparser = require("js2xmlparser");
 
 const blingService = require("../services/bling_service");
 const insertDeal = require("../services/insert_deal_mongo");
+const findDeal = require("../services/find_deal_mongo");
 
-module.exports = (request, response, next) => {
+module.exports = async (request, response, next) => {
     for (var i = 0; i < request.body.response.data.length; i++) {
         let idDeal = request.body.response.data[i].id;
         let value = request.body.response.data[i].value;
@@ -19,8 +20,11 @@ module.exports = (request, response, next) => {
         let phoneOrg = request.body.response.data[i].person_id.phone.value;
 
         if (statusDeal == "won") {
-            let sendOrder = blingService.sendOrder(name, email, idDeal, nameDeal, value);
-            let _insertDeal = insertDeal.insertDeal(idDeal, nameDeal, value, vendedor, name, phoneOrg, email, emailVendedor);
+            let findOrder = await findDeal.findDeal(idDeal);
+            if (!findOrder) {
+                let sendOrder = blingService.sendOrder(name, email, idDeal, nameDeal, value);
+                let _insertDeal = insertDeal.insertDeal(idDeal, nameDeal, value, vendedor, name, phoneOrg, email, emailVendedor);
+            }
         }
         else {
             console.log('Oportunidade não está ganha!');

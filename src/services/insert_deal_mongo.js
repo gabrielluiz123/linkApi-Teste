@@ -1,4 +1,3 @@
-const connMongo = require("./mongo_service");
 const dealModel = require("../models/deal_model");
 
 
