@@ -1,7 +1,4 @@
 require("dotenv").config();
-const axios = require("axios");
-const querystring = require('querystring');
-const js2xmlparser = require("js2xmlparser");
 
 const blingService = require("../services/bling_service");
 const insertDeal = require("../services/insert_deal_mongo");

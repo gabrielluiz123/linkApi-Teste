@@ -1,4 +1,3 @@
-const axios = require('axios');
 const dealModel = require("../models/deal_model");
 
 require("dotenv").config();
