@@ -22,7 +22,7 @@ module.exports = async (request, response, next) => {
         if (statusDeal == "won") {
             let findOrder = await findDeal.findDeal(idDeal);
             if (!findOrder) {
-                let sendOrder = blingService.sendOrder(name, email, idDeal, nameDeal, value);
+                let _sendOrder = blingService.sendOrder(name, email, idDeal, nameDeal, value);
                 let _insertDeal = insertDeal.insertDeal(idDeal, nameDeal, value, vendedor, name, phoneOrg, email, emailVendedor);
             }
         }
