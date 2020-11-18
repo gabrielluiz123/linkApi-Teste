@@ -18,9 +18,18 @@ module.exports = async (request, response, next) => {
 
         if (statusDeal == "won") {
             let findOrder = await findDeal.findDeal(idDeal);
-            if (!findOrder) {
-                let _sendOrder = blingService.sendOrder(name, email, idDeal, nameDeal, value);
-                let _insertDeal = insertDeal.insertDeal(idDeal, nameDeal, value, vendedor, name, phoneOrg, email, emailVendedor);
+            if (typeof (findOrder) !== "boolean") {
+                return response.status(500).send({ message: "Erro ao gerar pedidos!" });
+            }
+            if (findOrder === false) {
+                let _sendOrder = blingService(name, email, idDeal, nameDeal, value);
+                if (!_sendOrder) {
+                    return response.status(500).send({ message: "Erro ao gerar pedidos!" });
+                }
+                let _insertDeal = insertDeal(idDeal, nameDeal, value, vendedor, name, phoneOrg, email, emailVendedor);
+                if (!_insertDeal) {
+                    return response.status(500).send({ message: "Erro ao gerar pedidos!" });
+                }
             }
         }
         else {
@@ -28,5 +37,4 @@ module.exports = async (request, response, next) => {
         }
     }
     return response.status(200).send({ message: "Pedidos Gerados com sucesso!" });
-
 };

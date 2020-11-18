@@ -11,7 +11,7 @@ module.exports = (require, response, next) => {
         next();
     } catch (error) {
         return response.status(401).send({
-            message: 'Falha na autenticaçãoo!'
+            message: 'Falha na autenticação!'
         });
     }
 }

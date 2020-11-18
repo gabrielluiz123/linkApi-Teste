@@ -3,16 +3,19 @@ const dealModel = require("../models/deal_model");
 
 exports.findDeal = async function (idDeal) {
     let state = false;
-    const deals = await dealModel.find({ deal_id: idDeal });
-    if (deals.length > 0) {
-        state = true;
-        return state;
+    try {
+        const deals = await dealModel.find({ deal_id: idDeal });
+        if (deals.length > 0) {
+            state = true;
+            return state;
+        }
+        else {
+            state = false;
+            return state;
+        }
+    } catch (error) {
+        console.log(error);
+        return error;
     }
-    else {
-        state = false;
-        return state;
-    }
-
-
 
 };

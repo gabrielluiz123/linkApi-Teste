@@ -1,6 +1,6 @@
-const dealModel = require("../models/deal_model");
-
 require("dotenv").config();
+
+const dealModel = require("../models/deal_model");
 
 module.exports = async (request, response, next) => {
     try {
@@ -11,4 +11,3 @@ module.exports = async (request, response, next) => {
         return response.status(500).send({ message: "Erro ao recuperar dados!" });
     }
 };
-
