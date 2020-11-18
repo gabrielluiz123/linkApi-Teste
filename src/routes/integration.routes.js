@@ -9,4 +9,4 @@ const login = require('../middleware/login');
 router.get('/linkApi', login, integrationMiddleware, blingController);
 
 
-module.exports = router;
+module.exports = router;    

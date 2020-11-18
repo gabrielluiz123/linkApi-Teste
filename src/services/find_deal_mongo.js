@@ -3,8 +3,8 @@ const dealModel = require("../models/deal_model");
 
 exports.findDeal = async function (idDeal) {
     let state = false;
-    const txs = await dealModel.find({ deal_id: idDeal });
-    if (txs.length > 0) {
+    const deals = await dealModel.find({ deal_id: idDeal });
+    if (deals.length > 0) {
         state = true;
         return state;
     }
