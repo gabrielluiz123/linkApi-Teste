@@ -4,7 +4,7 @@ require("dotenv").config();
 
 module.exports = async (request, response, next) => {
     try {
-        const { data: response } = await axios.get('https://teste69.pipedrive.com/api/v1/deals?limit=500&api_token=' + process.env.API_TOKEN)
+        const { data: response } = await axios.get(process.env.URL_PIPE + '' + process.env.API_TOKEN)
         const dataPipe = {
             response
         };
