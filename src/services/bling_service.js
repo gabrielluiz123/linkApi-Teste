@@ -24,15 +24,21 @@ module.exports = function (name, email, idDeal, nameDeal, value) {
     };
 
     const orderXml = encodeURIComponent(js2xmlparser.parse('pedido', order, { declaration: { encoding: 'UTF-8' } }));
+    try {
+        var post = querystring.stringify({
+            apikey: process.env.API_KEY_BLING,
+            xml: orderXml
+        });
+        const resp = axios.post('https://bling.com.br/Api/v2/pedido/json/', post).catch(function (error) {
+            if (error.response) {
+                console.log(error)
+                return false;
+            }
 
-    var post = querystring.stringify({
-        apikey: process.env.API_KEY_BLING,
-        xml: orderXml
-    });
-    const resp = axios.post('https://bling.com.br/Api/v2/pedido/json/', post).catch(function (error) {
-        if (error.response) {
-            return false;
-        }
-    });
-    return true;
+        });
+        return true;
+    } catch (error) {
+        return false;
+    }
+
 }

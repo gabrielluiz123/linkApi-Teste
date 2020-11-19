@@ -6,6 +6,7 @@ const findDeal = require("../services/find_deal_mongo");
 
 module.exports = async (request, response, next) => {
     for (var i = 0; i < request.body.response.data.length; i++) {
+
         let idDeal = request.body.response.data[i].id;
         let value = request.body.response.data[i].value;
         let statusDeal = request.body.response.data[i].status;
@@ -30,6 +31,8 @@ module.exports = async (request, response, next) => {
                 if (!_insertDeal) {
                     return response.status(500).send({ message: "Erro ao gerar pedidos!" });
                 }
+            } else {
+                console.log("Pedido já inserido");
             }
         }
         else {
