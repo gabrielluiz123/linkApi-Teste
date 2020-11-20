@@ -93,3 +93,40 @@ Para recuperar todos os deals inseridos no bling que foram salvos no MongoDB Atl
         },
     ]
     }
+
+# Heroku
+
+O deploy da aplicação foi feito no heroku, segue o link
+
+    https://pacific-castle-88613.herokuapp.com
+
+## Login Get
+
+## Request
+
+`POST /login`
+
+    https://pacific-castle-88613.herokuapp.com/login
+
+    body: 
+    {
+        "user":"user",
+        "password": "user"
+    }
+
+## Integration Route
+
+Inserir o jwt no header do request como Authorization Bearer 
+
+`GET /linkApi`
+
+    https://pacific-castle-88613.herokuapp.com/linkapi
+
+
+## Get Deals Route
+
+Inserir o jwt no header do request como Authorization Bearer 
+
+`GET /getdeals`
+
+    https://pacific-castle-88613.herokuapp.com/getdeals
