@@ -17,7 +17,16 @@ Acesse a pasta clonada do aplicativo.
 
 # REST API
 
-Explicações sobre a REST API
+Preencher os dados do .env.example 
+
+    JWT_KEY=jwt_key
+    user=usuario_do_jwt
+    password=senha_do_jwt
+    API_TOKEN=token_da_api
+    API_KEY_BLING=api_key_bling
+    MONGO_URL=url_do_mongo
+    URL_PIPE=url_pipe
+
 
 ## Integration Route
 
@@ -51,7 +60,7 @@ Após o login ser efetuado com sucesso, deve-se enviar a requisição GET com o 
 
 Todos os deals do pipedrive serão enviados como pedido para o bling e os dados serão salvos no banco MongoDB Atlas
 
-## Recuperando Deals inseridos
+## Get Deals Route
 
 ### Request
 
