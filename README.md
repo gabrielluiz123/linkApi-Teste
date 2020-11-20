@@ -7,6 +7,18 @@ API desenvolvida em nodejs para o desafio técnico da empresa LinkAPI, tem por f
 Clone o repositório na sua máquina, utilizando git clone https://github.com/gabrielluiz123/linkApi-Teste.git .
 Acesse a pasta clonada do aplicativo.
 
+## Environment variable
+
+Preencher os dados do .env.example em um arquivo .env
+
+    JWT_KEY=jwt_key
+    user=usuario_do_jwt
+    password=senha_do_jwt
+    API_TOKEN=token_da_api
+    API_KEY_BLING=api_key_bling
+    MONGO_URL=url_do_mongo
+    URL_PIPE=url_pipe
+
 ## Install modules
 
     npm install
@@ -17,16 +29,7 @@ Acesse a pasta clonada do aplicativo.
 
 # REST API
 
-Preencher os dados do .env.example 
-
-    JWT_KEY=jwt_key
-    user=usuario_do_jwt
-    password=senha_do_jwt
-    API_TOKEN=token_da_api
-    API_KEY_BLING=api_key_bling
-    MONGO_URL=url_do_mongo
-    URL_PIPE=url_pipe
-
+A porta utilizada pela API está como padrão na 3000
 
 ## Integration Route
 
@@ -35,7 +38,6 @@ Preencher os dados do .env.example
 Primeiro deve-se efetuar o login no sistema e receber o token do JWT enviando um POST pela rota, o JWT tem 2 horas de prazo de validade
 
 `POST /login`
-
 
 
 ### Response
