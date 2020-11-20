@@ -15,8 +15,8 @@ module.exports = function (dealId, dealName, value, vendedor, orgName, orgPhone,
             }
         ]
     };
-
     var dealInsert = new dealModel(dealBag);
+    //Insere o deal no MongoDB
     dealInsert.save(function (err, dealBag) {
         if (err) return false;
         console.log(dealBag.deal_name + " saved.");

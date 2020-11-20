@@ -6,7 +6,7 @@ const endPoint = require("./endpoint.routes");
 
 
 const routes = express.Router();
-
+//Declaração das rotas
 routes.use(pipedriveRoute);
 routes.use(usersRoute);
 routes.use(endPoint);

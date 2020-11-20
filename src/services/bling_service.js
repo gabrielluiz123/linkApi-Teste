@@ -22,13 +22,15 @@ module.exports = function (name, email, idDeal, nameDeal, value) {
             },
         ]
     };
-
+    //Serializa o XML
     const orderXml = encodeURIComponent(js2xmlparser.parse('pedido', order, { declaration: { encoding: 'UTF-8' } }));
     try {
+        //Serializa as informações do body da requisição
         var post = querystring.stringify({
             apikey: process.env.API_KEY_BLING,
             xml: orderXml
         });
+        //Envia a requisição POST para a API do bling
         const resp = axios.post('https://bling.com.br/Api/v2/pedido/json/', post).catch(function (error) {
             if (error.response) {
                 console.log(error)
